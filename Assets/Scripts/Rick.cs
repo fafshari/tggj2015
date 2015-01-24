@@ -4,6 +4,7 @@ using System.Collections;
 public class Rick : MonoBehaviour {
 
     public Vector2 rickSpeed;
+    public bool isAlive;
 
 	// Use this for initialization
 	void Start () {
