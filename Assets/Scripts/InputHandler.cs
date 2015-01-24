@@ -20,6 +20,6 @@ public class InputHandler : MonoBehaviour {
 
 	public void OnTap(Vector2 fingerPos)
 	{
-		StateManager.GetInstance ().mState.OnTap (fingerPos);
+
 	}
 }
