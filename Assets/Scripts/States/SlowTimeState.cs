@@ -6,6 +6,7 @@ public class SlowTimeState : GameState {
     private int numJeffs,numBobs,numSteves,numSpeedyPeteys,numSamanthas;
     private bool showGUI;
 
+    private Rick rick;
 
 	// Use this for initialization
 	void Start () {
@@ -15,6 +16,9 @@ public class SlowTimeState : GameState {
         numSpeedyPeteys = StateManager.GetInstance().numSpeedyPeteys;
         numSamanthas = StateManager.GetInstance().numSamanthas;
         showGUI = true; //can't decide if GUI should show right away or not
+
+        GameObject obj = GameObject.FindGameObjectWithTag("Rick");
+		rick = (Rick)obj.GetComponent(typeof(Rick));
 	}
 	
 	// Update is called once per frame
@@ -36,7 +40,8 @@ public class SlowTimeState : GameState {
 	}
 
     public override void OnEnterState(){
-        Time.timeScale = 0.1f;
+        Time.timeScale = 0.02f;
+        Time.fixedDeltaTime = 0.02f * 0.02f;
     }
 
     public override void OnLeaveState(){

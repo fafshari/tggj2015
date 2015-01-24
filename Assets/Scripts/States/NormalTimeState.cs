@@ -22,6 +22,7 @@ public class NormalTimeState : GameState {
     public override void OnEnterState(){
         //rick.enabled = true;  //for coming back from a paused state
         Time.timeScale = 1.0f;
+        Time.fixedDeltaTime = 0.02f;
     }
 
     public override void OnLeaveState(){
