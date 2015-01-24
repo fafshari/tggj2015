@@ -7,9 +7,10 @@ public class SlowTimeState : GameState {
     private bool showGUI;
 
     private Rick rick;
+	private Moveable currentMovable;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 	    numJeffs = StateManager.GetInstance().numJeffs;
         numBobs = StateManager.GetInstance().numBobs;
         numSteves = StateManager.GetInstance().numSteves;
@@ -19,6 +20,7 @@ public class SlowTimeState : GameState {
 
         GameObject obj = GameObject.FindGameObjectWithTag("Rick");
 		rick = (Rick)obj.GetComponent(typeof(Rick));
+		print ("happens");
 	}
 	
 	// Update is called once per frame
@@ -42,10 +44,15 @@ public class SlowTimeState : GameState {
     public override void OnEnterState(){
         Time.timeScale = 0.02f;
         Time.fixedDeltaTime = 0.02f * 0.02f;
+		rick.inSlow = true;
+		print ("yo");
     }
 
     public override void OnLeaveState(){
-
+		rick.inSlow = false;
+		if (currentMovable != null) {
+			Destroy(currentMovable.gameObject);
+		}
     }
 
     public override void OnStateGUI(){
@@ -67,8 +74,9 @@ public class SlowTimeState : GameState {
                     GameObject go = (GameObject)Instantiate(Resources.Load("Jeff", typeof(GameObject)));
                     go.transform.position = new Vector3(0,0,0);
                     numJeffs--;
-                    showGUI = false;
-                    go.GetComponent<Moveable>().hasFocus = true;
+					showGUI = false;
+					currentMovable = go.GetComponent<Moveable>();
+					currentMovable.hasFocus = true;
                 }
 		    }
 		
@@ -77,8 +85,9 @@ public class SlowTimeState : GameState {
 			        GameObject go = (GameObject)Instantiate(Resources.Load("Steve", typeof(GameObject)));
                     go.transform.position = new Vector3(0,0,0);
                     numSteves--;
-                    showGUI = false;
-                    go.GetComponent<Moveable>().hasFocus = true;
+					showGUI = false;
+					currentMovable = go.GetComponent<Moveable>();
+					currentMovable.hasFocus = true;
                 }
 		    }
 			
@@ -87,20 +96,34 @@ public class SlowTimeState : GameState {
 			        GameObject go = (GameObject)Instantiate(Resources.Load("Bob", typeof(GameObject)));
                     go.transform.position = new Vector3(0,0,0);
                     numBobs--;
-                    showGUI = false;
-                    go.GetComponent<Moveable>().hasFocus = true;
+					showGUI = false;
+					currentMovable = go.GetComponent<Moveable>();
+					currentMovable.hasFocus = true;
                 }
 		    }
 			
-		    if (GUI.Button(new Rect(x,y+=0.15f * Screen.height,w,h), "Samantha")) {
-                if(numSamanthas > 0){
-			        GameObject go = (GameObject)Instantiate(Resources.Load("Samantha", typeof(GameObject)));
-                    go.transform.position = new Vector3(0,0,0);
-                    numSamanthas--;
-                    showGUI = false;
-                    go.GetComponent<Moveable>().hasFocus = true;
-                }
-		    }
+			if (GUI.Button(new Rect(x,y+=0.15f * Screen.height,w,h), "Samantha")) {
+				if(numSamanthas > 0){
+					GameObject go = (GameObject)Instantiate(Resources.Load("Samantha", typeof(GameObject)));
+					go.transform.position = new Vector3(0,0,0);
+					numSamanthas--;
+					showGUI = false;
+					currentMovable = go.GetComponent<Moveable>();
+					currentMovable.hasFocus = true;
+				}
+			}
+
+			if (GUI.Button(new Rect(x,y+=0.15f * Screen.height,w,h), "Speedy Petey")) {
+				if(numSpeedyPeteys > 0){
+					GameObject go = (GameObject)Instantiate(Resources.Load("SpeedyPetey", typeof(GameObject)));
+					go.transform.position = new Vector3(0,0,0);
+					numSamanthas--;
+					showGUI = false;
+					currentMovable = go.GetComponent<Moveable>();
+					currentMovable.hasFocus = true;
+
+				}
+			}
         }
     }
 }

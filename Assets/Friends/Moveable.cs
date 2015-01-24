@@ -25,6 +25,7 @@ public class Moveable : MonoBehaviour {
 
             if(Input.GetMouseButtonDown(0)){
                 hasFocus = false;
+				Destroy (this);
             }
         }
 	}
