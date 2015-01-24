@@ -70,12 +70,20 @@ public class StateManager : MonoBehaviour {
 				mState = (SlowTimeState)gameObject.AddComponent(typeof(SlowTimeState));
 			}
 		}
-        else if(cs.Equals(typeof(MoveFriendState))){
-            if(gameObject.GetComponent(typeof(MoveFriendState)) != null){
-				mState = (MoveFriendState)gameObject.GetComponent(typeof(MoveFriendState));
+        else if(cs.Equals(typeof(DeadState))){
+            if(gameObject.GetComponent(typeof(DeadState)) != null){
+				mState = (DeadState)gameObject.GetComponent(typeof(DeadState));
 			}
 			else{
-				mState = (MoveFriendState)gameObject.AddComponent(typeof(MoveFriendState));
+				mState = (DeadState)gameObject.AddComponent(typeof(DeadState));
+			}
+        }
+        else if(cs.Equals(typeof(WinState))){
+            if(gameObject.GetComponent(typeof(WinState)) != null){
+				mState = (WinState)gameObject.GetComponent(typeof(WinState));
+			}
+			else{
+				mState = (WinState)gameObject.AddComponent(typeof(WinState));
 			}
         }
 		
