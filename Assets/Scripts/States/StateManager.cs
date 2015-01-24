@@ -27,6 +27,9 @@ public class StateManager : MonoBehaviour {
 	public GameState mPreviousState;
 	
 	public float x,y,w,h;
+
+    // As long as each level is its own scene, each level will have a different amount
+    public int numJeffs,numBobs,numSteves,numSpeedyPeteys,numSamanthas;
 	
 	// Use this for initialization
 	void Awake () {
@@ -67,6 +70,14 @@ public class StateManager : MonoBehaviour {
 				mState = (SlowTimeState)gameObject.AddComponent(typeof(SlowTimeState));
 			}
 		}
+        else if(cs.Equals(typeof(MoveFriendState))){
+            if(gameObject.GetComponent(typeof(MoveFriendState)) != null){
+				mState = (MoveFriendState)gameObject.GetComponent(typeof(MoveFriendState));
+			}
+			else{
+				mState = (MoveFriendState)gameObject.AddComponent(typeof(MoveFriendState));
+			}
+        }
 		
 		
 		

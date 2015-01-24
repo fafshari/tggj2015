@@ -15,12 +15,19 @@ public class Rick : MonoBehaviour {
         Vector2 v = rigidbody2D.velocity;
         v.x = rickSpeed;
 	    rigidbody2D.velocity = v;
+
+        //Debug.DrawRay((Vector2)(transform.position),-Vector2.up);
 	}
 
     void OnCollisionEnter2D(Collision2D coll){
         if(coll.gameObject.tag == "Sam"){
             print("cockblocked");
             rickSpeed = 0;
+        }
+        if(coll.gameObject.tag == "Bob"){
+            print("boing");
+            rickSpeed = -(2*rickSpeed); //only do this if Rick hits Bob from the side
+            //needs more code to check if hit from top
         }
     }
 }

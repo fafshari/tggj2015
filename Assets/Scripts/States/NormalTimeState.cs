@@ -13,16 +13,15 @@ public class NormalTimeState : GameState {
 	
 	// Update is called once per frame
 	public override void StateUpdate () {
-	    Time.timeScale = 1.0f;
-
+        
         if(Input.GetButtonDown("BuildMode")){
             StateManager.GetInstance().SetState(typeof(SlowTimeState));
         }
 	}
 
     public override void OnEnterState(){
-        //rick.enabled = true;
-        print("Normal time");
+        //rick.enabled = true;  //for coming back from a paused state
+        Time.timeScale = 1.0f;
     }
 
     public override void OnLeaveState(){
