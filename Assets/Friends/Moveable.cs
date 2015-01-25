@@ -25,6 +25,8 @@ public class Moveable : MonoBehaviour {
 
             if(Input.GetMouseButtonDown(0)){
                 hasFocus = false;
+				BoxCollider2D bc2d = (BoxCollider2D)GetComponent<BoxCollider2D>();
+				bc2d.enabled = true;
 				Destroy (this);
             }
         }

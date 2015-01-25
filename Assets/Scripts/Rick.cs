@@ -23,6 +23,11 @@ public class Rick : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D coll) {
 		if (!inSlow) {
+			if (coll.gameObject.tag == "Carl") {
+				// victory
+				StateManager.NotifyRickInsideCarl();
+				return;
+			}
 			if (coll.gameObject.tag == "Sam") {
 					print ("cockblocked");
 					rigidbody2D.velocity = Vector2.zero;

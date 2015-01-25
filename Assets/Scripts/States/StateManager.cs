@@ -87,8 +87,10 @@ public class StateManager : MonoBehaviour {
 			}
         }
 		
-		
-		
 		mState.OnEnterState();
+	}
+
+	public static void NotifyRickInsideCarl () {
+		StateManager.instance.SetState(typeof(WinState));
 	}
 }
