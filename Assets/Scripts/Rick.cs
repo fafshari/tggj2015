@@ -28,6 +28,10 @@ public class Rick : MonoBehaviour {
 				StateManager.NotifyRickInsideCarl();
 				return;
 			}
+			if (coll.gameObject.tag == "Larkin") {
+				StateManager.NotifyRickLeavingBounds();
+				return;
+			}
 			if (coll.gameObject.tag == "Sam") {
 					print ("cockblocked");
 					rigidbody2D.velocity = Vector2.zero;

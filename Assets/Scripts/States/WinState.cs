@@ -15,6 +15,7 @@ public class WinState : GameState {
 
     public override void OnEnterState(){
 		rick.rigidbody2D.isKinematic = true;
+		rick.rigidbody2D.velocity = Vector2.zero;
     }
 
     public override void OnLeaveState(){

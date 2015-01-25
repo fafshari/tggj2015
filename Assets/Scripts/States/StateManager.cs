@@ -93,4 +93,8 @@ public class StateManager : MonoBehaviour {
 	public static void NotifyRickInsideCarl () {
 		StateManager.instance.SetState(typeof(WinState));
 	}
+
+	public static void NotifyRickLeavingBounds () {
+		StateManager.instance.SetState(typeof(WinState));
+	}
 }
