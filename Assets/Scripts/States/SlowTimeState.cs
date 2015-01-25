@@ -95,7 +95,6 @@ public class SlowTimeState : GameState
 										currentMovable.hasFocus = true;
 								}
 						}
-			
 						if (GUI.Button (new Rect (x, y += 0.15f * Screen.height, w, h), "Bob")) {
 								if (numBobs > 0) {
 										GameObject go = (GameObject)Instantiate (Resources.Load ("Bob", typeof(GameObject)));
@@ -106,6 +105,18 @@ public class SlowTimeState : GameState
 										currentMovable.hasFocus = true;
 								}
 						}
+		    if (GUI.Button(new Rect(x,y+=0.15f * Screen.height,w,h), "Bob")) {
+                if(numBobs > 0){
+			        GameObject go = (GameObject)Instantiate(Resources.Load("Bob", typeof(GameObject)));
+					BoxCollider2D bc2d = (BoxCollider2D)go.GetComponent<BoxCollider2D>();
+					bc2d.enabled = false;
+                    go.transform.position = new Vector3(0,0,0);
+                    numBobs--;
+					showGUI = false;
+					currentMovable = go.GetComponent<Moveable>();
+					currentMovable.hasFocus = true;
+                }
+		    }
 			
 						if (GUI.Button (new Rect (x, y += 0.15f * Screen.height, w, h), "Samantha")) {
 								if (numSamanthas > 0) {

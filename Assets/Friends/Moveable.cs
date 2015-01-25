@@ -58,7 +58,20 @@ public class Moveable : MonoBehaviour {
         // makes the shape follow the mouse
         // TODO needs boundaries
         // TODO angle shapes either before or after placing them
+#if UNITY_EDITOR
+	    if(hasFocus){
+            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Vector3 newVec = ray.origin;
+            newVec.z = 0;
+            gameObject.transform.position = newVec;
 
-        
+            if(Input.GetMouseButtonDown(0)){
+                hasFocus = false;
+				BoxCollider2D bc2d = (BoxCollider2D)GetComponent<BoxCollider2D>();
+				bc2d.enabled = true;
+				Destroy (this);
+            }
+        }
+#endif
 	}
 }
