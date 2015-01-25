@@ -30,9 +30,11 @@ public class WinState : GameState {
 			float h = 0.1f * Screen.height;
 			
 			if (GUI.Button(new Rect(x,y,w,h), "Next Level")){
+
 			}
-			
-			
+			if (GUI.Button(new Rect(x,y+=0.15f * Screen.height,w,h), "Restart Level")) {
+				Application.LoadLevel(StateManager.GetInstance().levelNum);
+			}
 			if (GUI.Button(new Rect(x,y+=0.15f * Screen.height,w,h), "Quit")) {
 				Application.Quit();
 			}

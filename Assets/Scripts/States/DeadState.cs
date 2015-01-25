@@ -3,9 +3,12 @@ using System.Collections;
 
 public class DeadState : GameState {
 
+    Rick rick;
+
 	// Use this for initialization
-	void Start () {
-	
+	void Awake () {
+	    GameObject obj = GameObject.FindGameObjectWithTag("Rick");
+		rick = (Rick)obj.GetComponent(typeof(Rick));
 	}
 	
 	public override void StateUpdate () {
@@ -13,7 +16,8 @@ public class DeadState : GameState {
 	}
 
     public override void OnEnterState(){
-        
+        rick.rigidbody2D.isKinematic = true;
+		rick.rigidbody2D.velocity = Vector2.zero;
     }
 
     public override void OnLeaveState(){
@@ -21,6 +25,18 @@ public class DeadState : GameState {
     }
 
     public override void OnStateGUI(){
-
+        float x = 0.42f * Screen.width;
+		float y = 0.1f * Screen.height;
+		float w = 0.2f * Screen.width;
+		float h = 0.1f * Screen.height;
+			
+		if (GUI.Button(new Rect(x,y,w,h), "Restart Level")){
+            Application.LoadLevel(StateManager.GetInstance().levelNum);
+		}
+			
+			
+		if (GUI.Button(new Rect(x,y+=0.15f * Screen.height,w,h), "Quit")) {
+			Application.Quit();
+		}
     }
 }

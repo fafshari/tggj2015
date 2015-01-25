@@ -98,9 +98,17 @@ public class Moveable : MonoBehaviour {
 
             if(Input.GetMouseButtonDown(0)){
                 hasFocus = false;
-				BoxCollider2D bc2d = (BoxCollider2D)GetComponent<BoxCollider2D>();
-				bc2d.enabled = true;
-				Destroy (this);
+                if(gameObject.tag == "Bob" || gameObject.tag == "Jeff" || gameObject.tag == "SpeedyPetey"){
+				    BoxCollider2D bc2d = (BoxCollider2D)GetComponent<BoxCollider2D>();
+				    bc2d.enabled = true;
+				    Destroy (this);
+                }
+                else if(gameObject.tag == "Steve" || gameObject.tag == "Samantha"){
+                    PolygonCollider2D pc2d = (PolygonCollider2D)GetComponent<PolygonCollider2D>();
+                    pc2d.enabled = true;
+                    Destroy(this);
+                }
+                
             }
         }
 #endif

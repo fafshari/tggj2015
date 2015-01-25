@@ -153,12 +153,16 @@ public class SlowTimeState : GameState
 								if (numSpeedyPeteys > 0) {
 										GameObject go = (GameObject)Instantiate (Resources.Load ("SpeedyPetey", typeof(GameObject)));
 										go.transform.position = new Vector3 (0, 0, 0);
-										numSamanthas--;
+										numSpeedyPeteys--;
 										currentMovable = go.GetComponent<Moveable> ();
 										currentMovable.hasFocus = true;
 
 								}
 						}
+                if (GUI.Button (new Rect (x += w + mpadding, y, w, h), "Restart")) {
+                    Application.LoadLevel(StateManager.GetInstance().levelNum);
+                }
+
 			}
 			else {
 				#if UNITY_EDITOR

@@ -30,6 +30,8 @@ public class StateManager : MonoBehaviour {
 
     // As long as each level is its own scene, each level will have a different amount
     public int numJeffs,numBobs,numSteves,numSpeedyPeteys,numSamanthas;
+
+    public int levelNum;
 	
 	// Use this for initialization
 	void Awake () {
@@ -95,6 +97,6 @@ public class StateManager : MonoBehaviour {
 	}
 
 	public static void NotifyRickLeavingBounds () {
-		StateManager.instance.SetState(typeof(WinState));
+		StateManager.instance.SetState(typeof(DeadState));
 	}
 }
