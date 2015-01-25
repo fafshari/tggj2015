@@ -23,10 +23,16 @@ public class NormalTimeState : GameState {
         //rick.enabled = true;  //for coming back from a paused state
         Time.timeScale = 1.0f;
         Time.fixedDeltaTime = 0.02f;
+		FingerGestures.OnDoubleTap += HandleOnDoubleTap;
+    }
+
+    void HandleOnDoubleTap (Vector2 fingerPos)
+    {
+		StateManager.GetInstance().SetState(typeof(SlowTimeState));
     }
 
     public override void OnLeaveState(){
-
+		FingerGestures.OnDoubleTap -= HandleOnDoubleTap;
     }
 
     public override void OnStateGUI(){
