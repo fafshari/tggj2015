@@ -33,7 +33,7 @@ public class StateManager : MonoBehaviour {
 	
 	// Use this for initialization
 	void Awake () {
-		mState = (NormalTimeState)gameObject.AddComponent(typeof(NormalTimeState));
+		mState = (SlowTimeState)gameObject.AddComponent(typeof(SlowTimeState));
 		mState.OnEnterState();
 		
 	}

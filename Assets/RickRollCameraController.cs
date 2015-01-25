@@ -3,6 +3,7 @@ using System.Collections;
 
 public class RickRollCameraController : MonoBehaviour {
 	public Rick _rick;
+	public bool _follow;
 	// Use this for initialization
 	void Start () {
 	
@@ -10,7 +11,9 @@ public class RickRollCameraController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.position = _rick.transform.position;
-		transform.Translate (Vector3.forward * -10);
-	}
+				if (_follow) {
+						transform.position = _rick.transform.position;
+						transform.Translate (Vector3.forward * -10);
+				}
+		}
 }
